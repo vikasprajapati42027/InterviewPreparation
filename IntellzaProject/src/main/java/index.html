@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Registration Form</title>
+    <script>
+        function validateForm() {
+          var firstName = document.getElementById("firstName").value;
+          var lastName = document.getElementById("lastName").value;
+          var email = document.getElementById("email").value;
+          var password = document.getElementById("password").value;
+          var confirmPassword = document.getElementById("confirmPassword").value;
+
+          // Validate First Name
+          if (firstName === "") {
+            alert("Please enter your first name");
+            return false;
+          }
+
+          // Validate Last Name
+          if (lastName === "") {
+            alert("Please enter your last name");
+            return false;
+          }
+
+          // Validate Email
+          if (email === "") {
+            alert("Please enter your email");
+            return false;
+          } else {
+            // Simple email format validation
+            var emailPattern = /^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$/;
+            if (!email.match(emailPattern)) {
+              alert("Please enter a valid email address");
+              return false;
+            }
+          }
+
+          // Validate Password
+          if (password === "") {
+            alert("Please enter a password");
+            return false;
+          } else if (password.length < 8) {
+            alert("Password should be at least 8 characters long");
+            return false;
+          }
+
+          // Validate Confirm Password
+          if (confirmPassword === "") {
+            alert("Please confirm your password");
+            return false;
+          } else if (password !== confirmPassword) {
+            alert("Passwords do not match");
+            return false;
+          }
+
+          // If all validations pass, form can be submitted
+          alert("Registration successful!");
+          return true;
+        }
+    </script>
+</head>
+<body>
+<h2>Registration Form</h2>
+<form onsubmit="return validateForm()">
+    <label for="firstName">First Name:</label>
+    <input type="text" id="firstName" name="firstName"><br><br>
+
+    <label for="lastName">Last Name:</label>
+    <input type="text" id="lastName" name="lastName"><br><br>
+
+    <label for="email">Email:</label>
+    <input type="text" id="email" name="email"><br><br>
+
+    <label for="password">Password:</label>
+    <input type="password" id="password" name="password"><br><br>
+
+    <label for="confirmPassword">Confirm Password:</label>
+    <input type="password" id="confirmPassword" name="confirmPassword"><br><br>
+
+    <input type="submit" value="Register">
+</form>
+</body>
+</html>
